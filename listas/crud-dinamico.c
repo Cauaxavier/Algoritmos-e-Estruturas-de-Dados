@@ -89,6 +89,23 @@ int tamanhoListaRecursivo(PONT atual, int tamanhoAtual) {
     
 }
 
+void inverterLista(LISTA* l) {
+    
+    PONT ant = NULL;
+    PONT atual = l->inicio;
+    PONT prox = NULL;
+    
+    while (atual != NULL) {
+        prox = atual->prox;
+        atual->prox = ant;
+        ant = atual;
+        atual = prox;
+    }
+    
+    l->inicio = ant;
+    
+}
+
 void incializarLista(LISTA* l) {
     l->inicio = NULL;
 }
