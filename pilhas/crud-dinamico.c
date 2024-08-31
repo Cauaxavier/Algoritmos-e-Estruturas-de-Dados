@@ -78,6 +78,24 @@ bool excluirElementoPila(PILHA* p, REGISTRO* reg) {
     return true;
 }
 
+bool inverterPilha(PILHA* p) {
+    PONT anterior = NULL;
+    PONT atual = p->topo;
+    PONT proximo = NULL;
+    
+    while (atual != NULL) {
+        proximo = atual->prox;
+        atual->prox = anterior;
+        anterior = atual;
+        atual = proximo;
+    }
+    
+    p->topo = anterior;
+    
+    return true;
+    
+}
+
 int main() {
     
     PILHA pilha;
@@ -93,11 +111,16 @@ int main() {
         inserirElementoPilha(&pilha, reg);
     }
     
+    exibirPilha(&pilha);
+    
+    inverterPilha(&pilha);
+    
+    exibirPilha(&pilha);
+    
     REGISTRO reg2;
     
     excluirElementoPila(&pilha, &reg2);
     
-    exibirPilha(&pilha);
     
     printf("\ntamanaho: %d", tamanho(&pilha));
     

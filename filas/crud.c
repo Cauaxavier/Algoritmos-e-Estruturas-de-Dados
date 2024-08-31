@@ -63,6 +63,22 @@ bool deleteElementQueue(QUEUE* q, REGISTRY* reg) {
     return true;
 }
 
+void queueInverter(QUEUE* q) {
+    int start = q->start;
+    int aux;
+    int size = q->numberItems;
+    int end = size - 1;
+    
+    while (start <= end) {
+        aux = q->A[start].key;
+        q->A[start].key = q->A[end].key;
+        q->A[end].key = aux;
+        start = start + 1;
+        end = end - 1;
+    }
+    
+}
+
 int main() {
     
     QUEUE queue;
@@ -80,11 +96,17 @@ int main() {
     
     printf("Tamanho: %d", tamanho);
     
+    showQuere(&queue);
+    
+    queueInverter(&queue);
+    
+    showQuere(&queue);
+    
     for (i = 0; i < 3; i++) {
         deleteElementQueue(&queue, &registry);
     }
     
-    showQuere(&queue);
+    //showQuere(&queue);
 
     return 0;
 }
