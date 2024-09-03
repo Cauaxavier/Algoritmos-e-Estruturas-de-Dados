@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
-#define MAX 10
+#define MAX 20
 
 typedef int TYPEKEY;
 
@@ -63,6 +63,35 @@ bool deleteElementQueue(QUEUE* q, REGISTRY* reg) {
     return true;
 }
 
+bool deleteNegativeNumbers(QUEUE* q) {
+    if (q->numberItems == 0) {
+        return false;
+    }
+
+    int count = 0;
+    int pos = q->start;
+
+    while (count < q->numberItems) {
+        if (q->A[pos].key < 0) {
+            
+            int i = pos;
+            
+            while (i != (q->start + q->numberItems - 1) % MAX) {
+                int nextPos = (i + 1) % MAX;
+                q->A[i] = q->A[nextPos];
+                i = nextPos;
+            }
+            
+            q->numberItems--;
+          
+        } else {
+            pos = (pos + 1) % MAX;
+            count++;
+        }
+    }
+    return true;
+}
+
 void queueInverter(QUEUE* q) {
     int start = q->start;
     int aux;
@@ -87,10 +116,18 @@ int main() {
     
     inicializeQueue(&queue);
     
+    registry.key = -1;
+    insertElementsQueue(&queue, registry);
+    
     for (i = 0; i < 10; i++) {
         registry.key = i;
         insertElementsQueue(&queue, registry);
     }
+    
+    registry.key = -2;
+    insertElementsQueue(&queue, registry);
+    
+    deleteNegativeNumbers(&queue);
     
     int tamanho = queueSize(&queue);
     
@@ -98,9 +135,9 @@ int main() {
     
     showQuere(&queue);
     
-    queueInverter(&queue);
+    //queueInverter(&queue);
     
-    showQuere(&queue);
+    //showQuere(&queue);
     
     for (i = 0; i < 3; i++) {
         deleteElementQueue(&queue, &registry);
