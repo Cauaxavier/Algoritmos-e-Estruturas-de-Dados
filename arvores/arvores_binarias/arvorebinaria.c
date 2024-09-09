@@ -62,14 +62,35 @@ bool insertSon(POINT root, TYPEKEY newKey, TYPEKEY fatherKey, SIDE side) {
     return true;
 }
 
-void printTree(POINT root) {
+void printTreePreOrder(POINT root) {
     if (root == NULL) {
         return;
     }
     
     printf("%d ", root->key);
-    printTree(root->left);
-    printTree(root->right);
+    printTreePreOrder(root->left);
+    printTreePreOrder(root->right);
+}
+
+
+void printTreeSymmetrical(POINT root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    printTreeSymmetrical(root->left);
+    printf("%d ", root->key);
+    printTreeSymmetrical(root->right);
+}
+
+void printPostOrder(POINT root) {
+    if (root == NULL) {
+        return;
+    }
+    
+    printPostOrder(root->left);
+    printPostOrder(root->right);
+    printf("%d ", root->key);
 }
 
 int main () {
@@ -89,7 +110,15 @@ int main () {
 
     // Imprimindo a árvore
     printf("Árvore em pré-ordem: ");
-    printTree(root);
+    printTreePreOrder(root);
+    printf("\n");
+
+    printf("Árvore ordem simétrica: ");
+    printTreeSymmetrical(root);
+    printf("\n");
+    
+    printf("Árvore ordem simétrica: ");
+    printPostOrder(root);
     printf("\n");
 
     // Procurando uma chave
