@@ -40,8 +40,8 @@ int main() {
         printf("%d ", v[i]);
     printf("\n");
 
-    printf("Comparacoes: %d\n", comparacoes);
     printf("Trocas:      %d\n", trocas);
+    printf("Comparacoes: %d\n", comparacoes);
 
     return 0;
 }

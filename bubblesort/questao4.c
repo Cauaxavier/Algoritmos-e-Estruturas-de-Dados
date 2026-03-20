@@ -105,7 +105,7 @@ void compararCaso(const char *titulo, const int original[], int n)
     copiarVetor(copiaNormal, original, n);
     copiarVetor(copiaOtimizada, original, n);
 
-    printf("=== %s ===\n", titulo);
+    printf("%s\n", titulo);
     printf("Vetor original: ");
     imprimir(original, n);
 
@@ -119,7 +119,7 @@ void compararCaso(const char *titulo, const int original[], int n)
     printf("\n");
 }
 
-int main(void)
+int main()
 {
     int ordenado[N];
     int reverso[N];
@@ -135,8 +135,7 @@ int main(void)
     compararCaso("Caso 3 - Desordenado", desordenado, N);
 
     printf("Conclusao:\n");
-    printf("O caso que mais reduz operacoes com early stop e o vetor ja ordenado,\n");
-    printf("porque nenhuma troca ocorre na primeira passada e o algoritmo termina cedo.\n");
+    printf("Naturalmente, ocaso que mais reduz operacoes com early stop e o vetor ja ordenado, porque nenhuma troca ocorre na primeira passada e o algoritmo termina cedo.\n");
 
     return 0;
 }

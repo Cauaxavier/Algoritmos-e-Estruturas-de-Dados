@@ -75,11 +75,5 @@ int main(void)
     selectionSortMetricas(trabalho, n, &comparacoes, &trocas);
     imprimirResumo("(iii) Vetor aleatorio", comparacoes, trocas);
 
-    printf("Explicacao:\n");
-    printf("No Selection Sort, o numero de comparacoes depende quase so de n: n*(n-1)/2.\n");
-    printf("Para n=20, isso resulta em 190 comparacoes em qualquer entrada.\n");
-    printf("As trocas podem variar, mas no maximo uma por posicao i (ate n-1).\n");
-    printf("Ja no Bubble Sort, a quantidade de trocas e ate de passadas pode mudar mais com a ordem inicial do vetor.\n");
-
     return 0;
 }
